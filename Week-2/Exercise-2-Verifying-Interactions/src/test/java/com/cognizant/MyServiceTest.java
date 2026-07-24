@@ -1,30 +1,21 @@
 package com.cognizant;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 public class MyServiceTest {
 
     @Test
-    public void testMultipleReturns() {
+    public void testVerifyInteraction() {
 
-        // Create mock object
-        ExternalApi mockApi = mock(ExternalApi.class);
+        ExternalApi mockApi = Mockito.mock(ExternalApi.class);
 
-        // Stub method with multiple return values
-        when(mockApi.getData())
-                .thenReturn("First Call")
-                .thenReturn("Second Call");
-
-        // Inject mock into service
         MyService service = new MyService(mockApi);
 
-        // Verify first call
-        assertEquals("First Call", service.fetchData());
+        service.fetchData();
 
-        // Verify second call
-        assertEquals("Second Call", service.fetchData());
+        verify(mockApi).getData();
     }
 }
