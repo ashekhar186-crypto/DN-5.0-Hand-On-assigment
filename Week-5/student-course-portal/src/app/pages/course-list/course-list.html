@@ -1,0 +1,40 @@
+<h1>Available Courses</h1>
+
+<input
+  type="text"
+  [(ngModel)]="searchTerm"
+  placeholder="Search courses">
+
+<button (click)="searchCourses()">
+  Search
+</button>
+
+<br><br>
+
+<!-- Loading -->
+<div *ngIf="isLoading">
+  <p>Loading courses...</p>
+</div>
+
+<!-- Content -->
+<div *ngIf="!isLoading">
+
+  <ng-container *ngIf="courses$ | async as courses">
+
+    <div *ngIf="courses.length > 0; else noCourses">
+
+      <app-course-card
+        *ngFor="let course of courses; trackBy: trackByCourseId"
+        [course]="course"
+        (enroll)="enroll($event)">
+      </app-course-card>
+
+    </div>
+
+  </ng-container>
+
+</div>
+
+<ng-template #noCourses>
+  <p>No courses available.</p>
+</ng-template>

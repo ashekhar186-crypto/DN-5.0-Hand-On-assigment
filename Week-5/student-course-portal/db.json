@@ -1,0 +1,29 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "name": "Angular Fundamentals",
+      "code": "ANG101",
+      "credits": 4,
+      "enrolled": true,
+      "gradeStatus": "passed"
+    },
+    {
+      "id": "2",
+      "name": "Java Programming",
+      "code": "JAVA201",
+      "credits": 3,
+      "enrolled": true,
+      "gradeStatus": "pending"
+    },
+    {
+      "id": "3",
+      "name": "Database Management",
+      "code": "DB301",
+      "credits": 4,
+      "enrolled": false,
+      "gradeStatus": "failed"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

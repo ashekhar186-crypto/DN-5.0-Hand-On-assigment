@@ -1,0 +1,30 @@
+<div [ngClass]="cardClasses">
+
+  <h2>{{ course.name }}</h2>
+
+  <p><strong>Course Code:</strong> {{ course.code }}</p>
+
+  <p><strong>Credits:</strong> {{ course.credits }}</p>
+
+  <p><strong>Status:</strong> {{ course.enrolled ? 'Enrolled' : 'Not Enrolled' }}</p>
+
+  <button type="button" (click)="toggleDetails()">
+    {{ isExpanded ? 'Hide Details' : 'Show Details' }}
+  </button>
+
+  <div *ngIf="isExpanded">
+
+    <p><strong>Course ID:</strong> {{ course.id }}</p>
+
+    <button
+      type="button"
+      (click)="enrollCourse()"
+      [disabled]="course.enrolled">
+
+      {{ course.enrolled ? 'Enrolled' : 'Enroll' }}
+
+    </button>
+
+  </div>
+
+</div>

@@ -1,0 +1,42 @@
+h1{
+  text-align:center;
+}
+
+form{
+  width:500px;
+  margin:auto;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 0 10px lightgray;
+}
+
+input,
+select{
+  width:100%;
+  padding:10px;
+  margin-top:5px;
+}
+
+button{
+  margin-right:10px;
+  padding:10px 20px;
+}
+
+small{
+  color:red;
+}
+
+.success{
+  margin-top:20px;
+  color:green;
+  font-weight:bold;
+  text-align:center;
+}
+
+.ng-invalid.ng-touched{
+  border:2px solid red;
+}
+
+.ng-valid.ng-touched{
+  border:2px solid green;
+}

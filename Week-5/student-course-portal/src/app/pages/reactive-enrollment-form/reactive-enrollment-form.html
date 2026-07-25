@@ -1,0 +1,147 @@
+<h1>Reactive Enrollment Form</h1>
+
+<form [formGroup]="enrollmentForm"
+      (ngSubmit)="onSubmit()">
+
+  <label>Student Name</label>
+
+  <input
+    type="text"
+    formControlName="studentName">
+
+  <div *ngIf="enrollmentForm.get('studentName')?.touched">
+
+    <small *ngIf="enrollmentForm.get('studentName')?.hasError('required')">
+      Name is required.
+    </small>
+
+    <small *ngIf="enrollmentForm.get('studentName')?.hasError('minlength')">
+      Minimum 3 characters required.
+    </small>
+
+    <small *ngIf="enrollmentForm.get('studentName')?.hasError('forbiddenName')">
+      Admin is not allowed.
+    </small>
+
+  </div>
+
+  <br><br>
+
+  <label>Email</label>
+
+  <input
+    type="email"
+    formControlName="studentEmail">
+
+  <div *ngIf="enrollmentForm.get('studentEmail')?.touched">
+
+    <small *ngIf="enrollmentForm.get('studentEmail')?.hasError('required')">
+      Email is required.
+    </small>
+
+    <small *ngIf="enrollmentForm.get('studentEmail')?.hasError('email')">
+      Invalid email.
+    </small>
+
+    <small *ngIf="enrollmentForm.get('studentEmail')?.pending">
+      Checking email...
+    </small>
+
+    <small *ngIf="enrollmentForm.get('studentEmail')?.hasError('emailTaken')">
+      Email already exists.
+    </small>
+
+  </div>
+
+  <br><br>
+
+  <label>Course ID</label>
+
+  <input
+    type="number"
+    formControlName="courseId">
+
+  <br><br>
+
+  <label>Preferred Semester</label>
+
+  <select formControlName="preferredSemester">
+
+    <option value="Odd">Odd</option>
+    <option value="Even">Even</option>
+
+  </select>
+
+  <br><br>
+
+  <label>
+
+    <input
+      type="checkbox"
+      formControlName="agreeToTerms">
+
+    I agree to Terms & Conditions
+
+  </label>
+
+  <br><br>
+
+  <h3>Skills</h3>
+
+  <div formArrayName="skills">
+
+    <div *ngFor="let skill of skills.controls; let i = index">
+
+      <input
+        [formControlName]="i"
+        placeholder="Enter Skill">
+
+      <button
+        type="button"
+        (click)="removeSkill(i)">
+
+        Remove
+
+      </button>
+
+      <br><br>
+
+    </div>
+
+  </div>
+
+  <button
+    type="button"
+    (click)="addSkill()">
+
+    Add Skill
+
+  </button>
+
+  <br><br>
+
+  <button
+    type="submit"
+    [disabled]="enrollmentForm.invalid">
+
+    Submit
+
+  </button>
+
+  <button
+    type="button"
+    (click)="resetForm()">
+
+    Reset
+
+  </button>
+
+</form>
+
+<div
+  class="success"
+  *ngIf="submitted">
+
+  Reactive Enrollment Submitted Successfully!
+
+</div>
