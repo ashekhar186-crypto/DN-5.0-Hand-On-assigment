@@ -4,4 +4,10 @@
 .vscode/
 
 # macOS
+.DS_Store.idea/
+# IntelliJ / VS Code project files
+**/.idea/
+
+# macOS
+**/.DS_Store
 .DS_Store
